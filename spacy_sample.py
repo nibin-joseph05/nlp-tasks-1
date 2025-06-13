@@ -2,17 +2,17 @@ import spacy
 import nltk
 from nltk.tokenize import RegexpTokenizer
 
-# Make sure these are run once to install and download what's needed:
+# Install dependencies (run once):
 # pip install spacy nltk
 # python -m spacy download en_core_web_sm
 
-# Load spaCy English model
+# Load spaCy model
 nlp = spacy.load("en_core_web_sm")
 
-# Sample text
-text = """Nvidia CEO Jensen Huang said that programming artificial intelligence (AI) is similar to how one “programs a person”. Speaking at London Tech Week recently, Huang said that AI is a “great equalizer” as it enables anyone to program using everyday language. Admitting that computing was hard historically, he said “We had to learn programming languages. We had to architect it. We had to design these computers that are very complicated”. “Now, all of a sudden ... there’s a new programming language. This new programming language is called ‘human,’” he added. "Most people don't know C++, very few people know Python, and everybody, as you know, knows human.”"""
+# Sample text (recent Kerala news)
+text = """On June 7, 2025, the Singapore-flagged container ship MV Wan Hai 503 caught fire following multiple explosions about 88 nautical miles off the coast of Beypore, Kerala. It carries over 2,000 metric tons of fuel and dozens of hazardous material containers. Indian Coast Guard and Navy crews have contained around 40% of the blaze and are towing the vessel away from shore to prevent ecological damage, though 4 crew members remain missing."""
 
-# NLTK RegexpTokenizer: word level
+# NLTK RegexpTokenizer: word-level
 word_tokenizer = RegexpTokenizer(r'\w+')
 print("Words (RegexpTokenizer - NLTK):")
 print(word_tokenizer.tokenize(text))
@@ -22,15 +22,15 @@ sentence_tokenizer = RegexpTokenizer(r'[^.!?]+[.!?]*')
 print("\nSentences (RegexpTokenizer - NLTK):")
 print(sentence_tokenizer.tokenize(text))
 
-# spaCy processing
+# Process text with spaCy
 doc = nlp(text)
 
-# spaCy tokens
+# spaCy word tokens
 print("\nWord Tokens (spaCy):")
 for token in doc:
     print(token.text)
 
-# spaCy sentence detection
+# spaCy sentence segmentation
 print("\nSentence Tokens (spaCy):")
 for sent in doc.sents:
     print(sent.text)
