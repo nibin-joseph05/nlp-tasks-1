@@ -1,0 +1,7 @@
+# Ignore trained model weights & checkpoints
+trained_model/
+results/
+*.bin
+*.pt
+*.safetensors
+*.pth
