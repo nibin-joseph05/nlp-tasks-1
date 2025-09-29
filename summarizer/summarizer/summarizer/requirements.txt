@@ -1,0 +1,6 @@
+flask
+nltk
+transformers
+torch
+rouge-score
+sumy
